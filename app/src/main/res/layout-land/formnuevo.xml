@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/asdasdasd">
+
+    <EditText
+        android:id="@+id/TxtUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Nombre de Usuario"
+        android:layout_below="@+id/txtError"
+        android:layout_alignStart="@+id/ChbCommie" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ChbCommie"
+        android:hint="Es acaso usted un maravillos y re piola seguidor del comunismo(como nosotros)?????"
+        android:layout_above="@+id/TxtTamañoSorete"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="22dp" />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:id="@+id/TxtTamañoSorete"
+        android:hint="Ingrese el promedio del tamaño de sus soretes(CM)"
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/TxtContrasena" />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/TxtContrasena"
+        android:hint="Contraseña"
+        android:layout_alignBaseline="@+id/TxtReingresar"
+        android:layout_alignBottom="@+id/TxtReingresar"
+        android:layout_alignStart="@+id/ChbCommie" />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/TxtReingresar"
+        android:hint="Reingresar Contraseña"
+        android:layout_marginBottom="20dp"
+        android:layout_above="@+id/BtnReg"
+        android:layout_toEndOf="@+id/BtnReg" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/BtnReg"
+        android:text="Registrarse"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/TxtContrasena" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtError"/>
+
+</RelativeLayout>
