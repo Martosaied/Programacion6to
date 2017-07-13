@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/TP4LCDTM.iml" filepath="$PROJECT_DIR$/TP4LCDTM.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ProgGit.iml" filepath="$PROJECT_DIR$/ProgGit.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

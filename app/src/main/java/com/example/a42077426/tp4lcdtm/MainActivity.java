@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    BDTP4 AccesoBase;
     SQLiteDatabase baseDatos;
     FragmentManager AdminFragments;
     FragmentTransaction ElBanqueroPapu;
@@ -20,14 +19,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-        if (AccesoBD()) {
-            Log.d("Main","Todo OK con la base del orto");
-        } else {
-            Log.d("Main","Seguimos participando");
-        }
-
 
         AdminFragments=getSupportFragmentManager();
         Fragment frgEntrar;
@@ -66,21 +57,5 @@ public class MainActivity extends AppCompatActivity {
         ElBanqueroPapu.replace(R.id.TheAlojator, frgNuevo);
         ElBanqueroPapu.commit();
     }
-    public boolean AccesoBD(){
-        Log.d("Main","BD 01");
-        AccesoBase=new BDTP4(this,"baseTP4",null,1);
-        Log.d("Main","BD 02");
-        if (AccesoBase==null) {
-            Log.d("Main","BD es null");
-        }
 
-
-        baseDatos=AccesoBase.getWritableDatabase();
-        Log.d("Main","BD 03");
-        if(baseDatos!=null){
-            return true;
-        }else{
-            return false;
-        }
-    }
     }

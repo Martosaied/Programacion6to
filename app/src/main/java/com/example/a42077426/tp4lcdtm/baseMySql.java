@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -56,9 +57,10 @@ public class baseMySql {
             }
         }
     };
-    public List<Usuario> ListUsers = new ArrayList<>();
+    public ArrayList<Usuario> ListUsers = new ArrayList<>();
     public Thread Traer = new Thread(){
         public void run(){
+            ListUsers = new ArrayList<>();
             try {
                 String result = conn();
                 if(result.compareTo("Eh ameo te salio todo re cheto gatito") == 0) {
@@ -67,6 +69,7 @@ public class baseMySql {
                     ResultSet Resultados = Instruccion.executeQuery(SQLLectura);
                     if(Resultados.first()){
                         Usuario user = new Usuario();
+                        user.Id = Resultados.getInt(1);
                         user.UserName = Resultados.getString(1);
                         user.Password = Resultados.getString(2);
                         user.FechaIngreso = Resultados.getString(3);
@@ -74,11 +77,12 @@ public class baseMySql {
                         user.TamañoPromSorete = Resultados.getInt(5);
                         ListUsers.add(user);
                         while (Resultados.next()){
-                            user.UserName = Resultados.getString(1);
-                            user.Password = Resultados.getString(2);
-                            user.FechaIngreso = Resultados.getString(3);
-                            user.Commie = Resultados.getBoolean(4);
-                            user.TamañoPromSorete = Resultados.getInt(5);
+                            user.Id = Resultados.getInt(1);
+                            user.UserName = Resultados.getString(2);
+                            user.Password = Resultados.getString(3);
+                            user.FechaIngreso = Resultados.getString(4);
+                            user.Commie = Resultados.getBoolean(5);
+                            user.TamañoPromSorete = Resultados.getInt(6);
                             ListUsers.add(user);
                         }
                     }else{
@@ -87,6 +91,32 @@ public class baseMySql {
                 }
 
 
+            }catch(SQLException e){
+
+            }
+        }
+    };
+    public boolean LogInExito;
+    public Thread LogIn = new Thread(){
+        public void run(){
+            LogInExito = false;
+            try {
+                String result = conn();
+                if(result.compareTo("Eh ameo te salio todo re cheto gatito") == 0) {
+                    Statement Instruccion = Conexion.createStatement();
+                    String SQLLectura = "select * from usuarios WHERE Nombre = " + Usuario.user.UserName + "AND Contrasena = " + Usuario.user.Password;
+                    ResultSet Resultados = Instruccion.executeQuery(SQLLectura);
+                    if(Resultados.first()){
+                        LogInExito = true;
+                        int id = Resultados.getInt(1);
+                        Date d = new Date();
+                        Instruccion = Conexion.createStatement();
+                        SQLLectura = "UPDATE `usuarios` SET `FechaIngreso`=" + d.toString() + " WHERE Id = " + id;
+                        Instruccion.executeQuery(SQLLectura);
+                    }else{
+                        Log.d("SelectUsuarios", "No hay nada");
+                    }
+                }
             }catch(SQLException e){
 
             }

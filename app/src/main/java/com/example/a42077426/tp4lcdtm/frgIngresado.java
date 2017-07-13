@@ -23,9 +23,6 @@ public class frgIngresado extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View VistaADevolver;
         VistaADevolver = inflater.inflate(R.layout.todos, container, false);
-        boolean Existe = false;
-        MainActivity AP;
-        AP = (MainActivity) getActivity();
         ArrayList<String> DatosLista;
         DatosLista=new ArrayList<>();
         baseMySql MySql = new baseMySql();
@@ -37,26 +34,7 @@ public class frgIngresado extends Fragment {
         {
             Log.d("asjiodfasjiodsa","Hay cosas en la lista");
         }
-        boolean Exitoiso = AP.AccesoBD();
-        if (Exitoiso) {
-            Cursor conjuntoDeRegistros;
-            conjuntoDeRegistros = AP.baseDatos.rawQuery("select user from usuarios", null);
-            if (conjuntoDeRegistros.moveToFirst()) {
-                do {
-                    String UsernameT = conjuntoDeRegistros.getString(0);
-                    DatosLista.add(UsernameT);
-                } while (conjuntoDeRegistros.moveToNext());
-            }
-            ArrayAdapter<String> Adaptador;
-            Adaptador=new ArrayAdapter<String>(VistaADevolver.getContext() ,android.R.layout.simple_spinner_item, DatosLista);
-            Adaptador.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-
-            Spinner spnTodos = (Spinner)VistaADevolver.findViewById(R.id.Spinner);
-            spnTodos.setAdapter(Adaptador);
-
-
-
-        }
+        //USAR MySql.ListUsers
         return VistaADevolver;
 
     }

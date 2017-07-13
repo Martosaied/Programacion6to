@@ -1,12 +1,11 @@
 package com.example.a42077426.tp4lcdtm;
 
-import java.util.Date;
-
 /**
  * Created by Administrador on 6/7/2017.
  */
 
 public class Usuario {
+    public int Id;
     public String UserName;
     public String Password;
     public String FechaIngreso;
