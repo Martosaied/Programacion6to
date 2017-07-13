@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
@@ -23,18 +24,24 @@ public class frgIngresado extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View VistaADevolver;
         VistaADevolver = inflater.inflate(R.layout.todos, container, false);
-        ArrayList<String> DatosLista;
-        DatosLista=new ArrayList<>();
+        MainActivity AP;
+        AP = (MainActivity) getActivity();
         baseMySql MySql = new baseMySql();
         MySql.Traer.start();
         if(MySql.ListUsers == null){
-
             Log.d("asjiodfasjiodsa","NO hay cosas en la lista");
         }else
         {
             Log.d("asjiodfasjiodsa","Hay cosas en la lista");
+            ListView ListViewUsers;
+            ListViewUsers = (ListView)VistaADevolver.findViewById(R.id.lsvUsuarios);
+
+
+            AdaptadorUsuarios Adapter;
+            Adapter = new AdaptadorUsuarios(MySql.ListUsers, AP.getApplicationContext());
+
+            ListViewUsers.setAdapter(Adapter);
         }
-        //USAR MySql.ListUsers
         return VistaADevolver;
 
     }
